@@ -12,7 +12,7 @@ function create(req, res) {
     //airline cant accept n/a
 
     // date agrees with the typeof data we are looking for?
-    
+    console.log(typeof req.date) //string... why am i not displaying the string?
     // Create a flight using mongoose
   const flight = new Flight(req.body)
   flight.save(function(err) {
@@ -28,12 +28,11 @@ function newFlight(req, res) {
 }
 
 function index(req, res) {
-    Flight.find({}, function(error, flight) {
+    Flight.find({}, function(error, flights) {  //this is where we call flights from db or model?
         res.render('flights/index', {
-           flights: flights
+            flights: flights,
+            time: req.time,
+            date: req.date
         })
     })
 }
-
-// time: req.time,
-// date: req.date
