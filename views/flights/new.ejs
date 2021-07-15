@@ -7,6 +7,10 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <title>Document</title>
 </head>
+<nav>    
+  <a href="/flights">All Flights</a>  
+  <a href="/flights/new">Add Flight</a>
+</nav> 
 <body>
   <h1>Enter a Flight</h1>
   <form action="/flights" method="POST">
@@ -21,7 +25,7 @@
     </label><br>
     <label>Airport:
       <select name="airport">
-         <option value="DEN">DEN
+         <option value="DEN" selected>DEN
             </option>
         <option value="AUS">AUS</option>
         <option value="DFW">DFW</option>
@@ -35,7 +39,9 @@
       <input type="text" name="flightNo">
     </label><br>
     <div>
-      <input type="date" name="date">
+      Departure date:
+      <!-- <input type="date" name="date"> -->
+      <input type="datetime-local" name="date">
      
     </div>
 

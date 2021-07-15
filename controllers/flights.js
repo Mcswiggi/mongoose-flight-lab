@@ -7,12 +7,16 @@ export{
 }
 
 function create(req, res) {
+    console.log(req.body)
     //accept a flightNo between 10 and 9999
     
     //airline cant accept n/a
 
     // date agrees with the typeof data we are looking for?
-    console.log(typeof req.date) //string... why am i not displaying the string?
+    console.log('typeof body.departs before', typeof (req.body.departs)) //string... why am i not displaying the string?
+    req.body.departs = new Date().toLocaleDateString()
+    console.log('typeof body.departs after function', typeof req.body.departs) //string... why am i not displaying the string?
+    
     // Create a flight using mongoose
   const flight = new Flight(req.body)
   flight.save(function(err) {
