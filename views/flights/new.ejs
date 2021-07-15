@@ -9,6 +9,41 @@
 </head>
 <body>
   <h1>Enter a Flight</h1>
+  <form action="/flights" method="POST">
+    <label>Airline:
+      <select name="airline">
+        <!-- for n/a add some logic for the value "" !!-->
+        <option value="">n/a </option> 
+        <option value="American">American</option>
+        <option value="Southwest">Southwest</option>
+        <option value="United">United</option>
+      </select>
+    </label><br>
+    <label>Airport:
+      <select name="airport">
+         <option value="DEN">DEN
+            </option>
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <!-- <option value="DEN">DEN</option> -->
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>
+      </select>
+    </label><br>
+    <!-- add some logice for 10 to 9999 -->
+    <label>Flight Number: required between 10 and 9999
+      <input type="text" name="flightNo">
+    </label><br>
+    <div>
+      <input type="date" name="date">
+     
+    </div>
+
+
+
+    <button type="submit">Submit Flight</button>
+
   
+  </form>
 </body>
 </html>
