@@ -1,6 +1,31 @@
 import { Flight } from '../models/flight.js'
 
-export { newFlight as new, index, create }
+export { 
+  newFlight as new,
+  index, 
+  create,
+  show,
+  createTicket,
+  }
+
+  function createTicket (req, res) {
+    Flight.findById(req.params.id, function(err, flight) {
+      flight.tickets.push(req.body);
+      flight.save(function(err) {
+        res.redirect(`/flights/${flight._id}`);
+      });
+    });
+  }
+
+  function show(req, res) {
+    //finding flight
+    Flight.findById(req.params.id, function(err,flight) {
+      res.render('flights/show', {
+        title: 'Flight Details',
+        flight: flight,
+      })
+    })
+  }
 
 function create(req, res) {
   console.log(req.body)
@@ -22,7 +47,9 @@ function create(req, res) {
 }
 
 function newFlight(req, res) {
-  res.render('flights/new')
+  res.render('flights/new', {
+    title: 'Add New Flight',
+  })
   // res.redirect('/flights/index')
 }
 
@@ -30,6 +57,7 @@ function index(req, res) {
   Flight.find({}, function (error, flights) {
     //this is where we call flights from db or model?
     res.render('flights/index', {
+      title: 'Flights',
       flights: flights,
       time: req.time,
       date: req.date,
