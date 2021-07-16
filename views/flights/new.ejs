@@ -1,10 +1,8 @@
 <%- include('../partials/html-head') %>
 <h1><%= title %> </h1>
   
-<nav>
-    <a href="/flights">All Flights</a>
-    <a href="/flights/new">Add Flight</a>
-  </nav>
+<%- include('../partials/nav') %>
+
   <body>
     <h1>Enter a Flight</h1>
     <form action="/flights" method="POST">

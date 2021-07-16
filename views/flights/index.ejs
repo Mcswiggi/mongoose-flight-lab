@@ -1,10 +1,7 @@
 <%- include('../partials/html-head') %>
   <h1><%= title %> </h1>
+  <%- include('../partials/nav') %>
   <body>
-    <nav>
-      <a href="/flights">All Flights</a>
-      <a href="/flights/new">Add Flight</a>
-    </nav>
     <br />
     Today's Date: <%= date %>
     <br />
@@ -23,7 +20,11 @@
         <td><%= flight.flightNo %></td>
         <td><%= flight.departs %></td>
         <td><a href="/flights/<%= flight._id %>">DETAILS</a></td>
-
+        <td>
+          <form action="/flights/<%= flight._id %>?_method=DELETE" method="POST">
+            <button>X</button>
+          </form>
+        </td>
       </tr>
       <% }) %>
     </table>
