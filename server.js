@@ -1,4 +1,4 @@
-import("dotenv/config")
+import('dotenv/config')
 import createError from 'http-errors'
 import express from 'express'
 import path from 'path'
@@ -19,7 +19,7 @@ app.set(
 )
 app.set('view engine', 'ejs')
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   console.log('Hello SEI!!!')
   req.time = new Date().toLocaleTimeString()
   req.date = new Date().toLocaleDateString()
