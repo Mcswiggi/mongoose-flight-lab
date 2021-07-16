@@ -14,12 +14,4 @@ const flightSchema = new Schema(
   { timestamps: true }
 )
 
-// releaseYear: {
-//   type: Number,
-//   default: function() {
-//     return new Date().getFullYear()
-//   },
-//   min: 1927,
-// },
-
 const Flight = mongoose.model('Flight', flightSchema)
