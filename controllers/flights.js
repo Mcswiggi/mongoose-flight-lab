@@ -23,7 +23,6 @@ export {
   function deleteFlight (req, res) {
     Flight.findByIdAndDelete(req.params.id, function(err, flight) {
       res.redirect('/flights')
-      console.log(req.params.id)
     })
   }
 
@@ -87,10 +86,12 @@ function newFlight(req, res) {
 
 function index(req, res) {
   Flight.find({}, function (error, flights) {
-    //this is where we call flights from db or model?
+    //this is where we call flights from model
     res.render('flights/index', {
       title: 'Flights',
       flights: flights,
+
+
       time: req.time,
       date: req.date,
     })
