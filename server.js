@@ -6,9 +6,11 @@ import { fileURLToPath } from 'url'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import('./config/database.js')
+import methodOverride from 'method-override'
 
 import { router as indexRouter } from './routes/index.js'
 import { router as flightsRouter } from './routes/flights.js'
+import { router as destinationsRouter} from './routes/destinations.js'
 
 const app = express()
 
@@ -36,9 +38,11 @@ app.use(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
 )
+app.use(methodOverride('_method'))
 
 app.use('/', indexRouter)
 app.use('/flights', flightsRouter)
+app.use('/destinations', destinationsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

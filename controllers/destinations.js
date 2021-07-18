@@ -1,0 +1,26 @@
+import { Destination } from '../models/destination.js'
+import { Flight } from '../models/flight.js'
+
+export{
+    newDestination as new,
+    create
+
+}
+
+function create(req, res) {
+    Destination.create(req.body, function(err, destination){
+        res.redirect('/destinations/new')
+    })
+}
+
+function newDestination (req, res) {
+    // Flight.findById(req.params.id)
+    //     .populate('destinations')
+
+    Destination.find({}, function (err, destinations){
+        res.render('destinations/new', {
+            title: 'Add Destination',
+            destinations
+        })
+    })
+}
