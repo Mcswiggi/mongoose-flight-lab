@@ -28,7 +28,7 @@
 
       <button type="submit">Purchase Ticket</button>
     </form>
-
+<br>
     <% if (flight.tickets.length) { %>
         <table>
           <thead>
@@ -54,5 +54,24 @@
       <% } else { %>
         <h3>No Tickets Purchased Yet</h3>
       <% } %>
+<br>
+
+<div>Destinations:</div>
+<ul>
+  <%- flight.destinations.map(p => 
+          `<li>${p.airport}</li>`
+          ).join('') %>
+      </ul>
+      
+      <form id="add-per-to-destination" action="/flights/<%= flight._id %>/destinations" method="POST">
+        <select name="destinationId">
+          <%- destinations.map(p => 
+            `<option value="${p._id}">${p.airport}</option>`
+          ).join('') %>
+        </select>
+        <button type="submit">Add To Trip</button>
+      </form>
+<!-- display a select element for each option showing destination -->
+
 </body>
 </html>
