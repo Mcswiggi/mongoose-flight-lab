@@ -61,12 +61,16 @@ export {
 function create(req, res) {
   console.log(req.body)
   //accept a flightNo between 10 and 9999
-
+  
   //airline cant accept n/a
-
+  
   // date agrees with the typeof data we are looking for?
-  // req.body.departs = new Date().toLocaleDateString()
-  req.body.departs = new Date().toISOString().slice(0, 16)
+  req.body.departs = new Date(req.body.departs).toLocaleDateString()
+  
+  //req.body.departs = new Date(req.body.departs)//.split('-').splice(1,2, (parseInt(req.body.departs[0])+1).toString())
+  
+  console.log(req.body.departs)
+  //looking for date to be returned as a string
 
   // Create a flight using mongoose
   const flight = new Flight(req.body)
